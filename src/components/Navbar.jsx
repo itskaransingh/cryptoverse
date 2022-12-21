@@ -24,6 +24,28 @@ const Navbar = () => {
     screen < 768 ? setactivemenu(false) : setactivemenu(true);
   }, [screen]);
 
+const menuItems = [
+  {
+    label:(
+      <Link to="/">Home</Link>
+    ),
+    icon: <HomeOutlined  style={{ transform: "translateY(-1px)" }} />
+  },
+  {
+    label:(
+      <Link to="/cryptocurrencies" >Cryptocurrencies</Link>
+    ),
+    icon:<MoneyCollectOutlined style={{ transform: "translateY(0px)" }} />
+
+  },
+  {
+    label:(
+      <Link to="/news">News</Link>
+    ),
+    icon: <FundOutlined style={{ transform: "translateY(-1px)" }} />
+  },
+]
+  
   return (
     <div className="nav-container">
       <div className="logo-container">
@@ -46,9 +68,9 @@ const Navbar = () => {
         </Button>
       </div>
 
-      {activemenu && (
-        <Menu theme="dark">
-          <Menu.Item
+      {activemenu ? (
+        <Menu theme="dark" items={menuItems}>
+          {/* <Menu.Item
             icon={<HomeOutlined style={{ transform: "translateY(-1px)" }} />}
           >
             <Link to="/">Home</Link>
@@ -65,9 +87,9 @@ const Navbar = () => {
             icon={<FundOutlined style={{ transform: "translateY(-1px)" }} />}
           >
             <Link to="/news">News</Link>
-          </Menu.Item>
+          </Menu.Item> */}
         </Menu>
-      )}
+      ):null}
     </div>
   );
 };
